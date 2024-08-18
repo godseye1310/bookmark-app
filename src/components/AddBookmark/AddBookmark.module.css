@@ -1,0 +1,12 @@
+.form {
+	text-align: center;
+	padding: 1rem;
+}
+
+.form label {
+	margin-right: 1rem;
+}
+
+.form input {
+	margin-left: 2rem;
+}
