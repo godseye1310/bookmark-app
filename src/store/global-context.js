@@ -7,7 +7,7 @@ const globalContext = React.createContext({
 	deleteBookmark: (id) => {},
 	editBookmark: (edit) => {},
 
-	setData: {},
+	// setData: {},
 });
 
 export default globalContext;

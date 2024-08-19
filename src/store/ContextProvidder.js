@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import globalContext from "./global-context";
-import setData from "./setdata-context";
+// import setData from "./setdata-context";
 import axios from "axios";
 
 const API_URL = "https://crudcrud.com/api/8f5b27c8e9124822a598ed08c8282e82/bookmarkList";
@@ -11,7 +11,7 @@ const ContextProvidder = (props) => {
 
 	const [bookmarkList, setbookmarkList] = useState([]);
 
-	const addBookmarkHandler = async (bookmarkItem) => {
+	const addBookmarkHandler = useCallback(async (bookmarkItem) => {
 		try {
 			const response = await axios.post(API_URL, bookmarkItem);
 
@@ -38,7 +38,7 @@ const ContextProvidder = (props) => {
 		// } catch (error) {
 		// 	console.log(error);
 		// }
-	};
+	}, []);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -80,7 +80,7 @@ const ContextProvidder = (props) => {
 		}
 	};
 
-	const { setTitle, setBookmark } = useContext(setData);
+	// const { setTitle, setBookmark } = useContext(setData);
 
 	const editBookmarkHandler = async (edit) => {
 		try {
@@ -90,8 +90,8 @@ const ContextProvidder = (props) => {
 				for (let pdata of prevList) {
 					if (pdata._id === edit._id) {
 						// console.log(edit);
-						setTitle(edit.title);
-						setBookmark(edit.bookmark);
+						// setTitle(edit.title);
+						// setBookmark(edit.bookmark);
 						return prevList.filter((pdata) => pdata._id !== edit._id);
 					}
 				}
@@ -108,12 +108,14 @@ const ContextProvidder = (props) => {
 		deleteBookmark: deleteBookmarkHandler,
 		editBookmark: editBookmarkHandler,
 
-		setData: {
-			// mytitle,
-			// setTitle,
-			// myBookmark,
-			// setBookmark,
-		},
+		setbookmarkList,
+
+		// setData: {
+		// 	// mytitle,
+		// 	// setTitle,
+		// 	// myBookmark,
+		// 	// setBookmark,
+		// },
 	};
 
 	return (

@@ -4,20 +4,26 @@ import Card from "../../UI/Card";
 import BookmarkItem from "./BookmarkItem";
 import globalContext from "../../../store/global-context";
 import displayContext from "../../../store/display-context.js";
+// import EditData from "../../../store/edit-context.js";
+import setData from "../../../store/setdata-context.js";
 
 const BookmarkList = () => {
-	const listCtx = useContext(globalContext);
+	const { bookmarkList, deleteBookmark, editBookmark } = useContext(globalContext);
 	const { formDisplayHandler } = useContext(displayContext);
+	// const { editBookmark } = useContext(EditData);
+	const { setTitle, setBookmark } = useContext(setData);
 
-	const { bookmarkList } = listCtx;
+	// const { bookmarkList, deleteBookmark, editBookmark} = listCtx;
 	console.log("re-evaluated cause of context");
 
 	const deleteHandler = (delitem) => {
-		listCtx.deleteBookmark(delitem);
+		deleteBookmark(delitem);
 	};
 
 	const editHandler = (editItem) => {
-		listCtx.editBookmark(editItem);
+		setTitle(editItem.title);
+		setBookmark(editItem.bookmark);
+		editBookmark(editItem);
 		formDisplayHandler(true);
 	};
 

@@ -5,18 +5,21 @@ import AddBookmark from "./components/AddBookmark/AddBookmark";
 import BookmarkList from "./components/Layout/Bookmarks/BookmarkList";
 import DisplayProvider from "./store/DisplayProvider";
 import SetDataProvider from "./store/SetDataProvider";
+// import EditProvider from "./store/EditProvider";
 
 function App() {
 	return (
-		<SetDataProvider>
-			<ContextProvidder>
+		<ContextProvidder>
+			<SetDataProvider>
+				{/* <EditProvider> */}
 				<DisplayProvider>
 					<Header />
 					<AddBookmark />
 					<BookmarkList />
 				</DisplayProvider>
-			</ContextProvidder>
-		</SetDataProvider>
+				{/* </EditProvider> */}
+			</SetDataProvider>
+		</ContextProvidder>
 	);
 }
 
