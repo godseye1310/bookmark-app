@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./Header.module.css";
 import Button from "../UI/Button";
-import globalContext from "../../store/global-context";
+import displayContext from "../../store/display-context";
 
 const Header = () => {
-	const { formDisplayHandler } = useContext(globalContext);
+	const { formDisplayHandler } = useContext(displayContext);
 	const showForm = () => {
 		formDisplayHandler(true);
 	};

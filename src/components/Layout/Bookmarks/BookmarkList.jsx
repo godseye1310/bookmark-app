@@ -3,9 +3,11 @@ import styles from "./BookmarkList.module.css";
 import Card from "../../UI/Card";
 import BookmarkItem from "./BookmarkItem";
 import globalContext from "../../../store/global-context";
+import displayContext from "../../../store/display-context.js";
 
 const BookmarkList = () => {
 	const listCtx = useContext(globalContext);
+	const { formDisplayHandler } = useContext(displayContext);
 
 	const { bookmarkList } = listCtx;
 	console.log("re-evaluated cause of context");
@@ -16,7 +18,7 @@ const BookmarkList = () => {
 
 	const editHandler = (editItem) => {
 		listCtx.editBookmark(editItem);
-		listCtx.formDisplayHandler(true);
+		formDisplayHandler(true);
 	};
 
 	let dataList = bookmarkList.map((markitem) => {
@@ -39,4 +41,4 @@ const BookmarkList = () => {
 	);
 };
 
-export default BookmarkList;
+export default React.memo(BookmarkList);

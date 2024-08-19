@@ -3,11 +3,15 @@ import styles from "./AddBookmark.module.css";
 import ModalOverlay from "./../UI/ModalOverlay";
 import Button from "../UI/Button";
 import globalContext from "../../store/global-context";
+import displayContext from "../../store/display-context";
+import setData from "../../store/setdata-context";
 
 const AddBookmark = () => {
 	const formCtx = useContext(globalContext);
+	// const {onDisplay} = useContext(displayContext)
+	const displayCtx = useContext(displayContext);
 
-	const { mytitle, setTitle, myBookmark, setBookmark } = formCtx.setData;
+	const { mytitle, setTitle, myBookmark, setBookmark } = useContext(setData);
 
 	const titleHandler = (event) => {
 		setTitle(event.target.value);
@@ -27,12 +31,12 @@ const AddBookmark = () => {
 		formCtx.addBookmark(bookmarkData);
 		setTitle("");
 		setBookmark("");
-		formCtx.formDisplayHandler(false);
+		displayCtx.formDisplayHandler(false);
 		// console.log(bookmarkData);
 	};
 
 	const closeForm = () => {
-		formCtx.formDisplayHandler(false);
+		displayCtx.formDisplayHandler(false);
 		setTitle("");
 		setBookmark("");
 	};
@@ -67,7 +71,7 @@ const AddBookmark = () => {
 			</form>
 		</ModalOverlay>
 	);
-	return <>{formCtx.onDisplay && addBookmarkForm}</>;
+	return <>{displayCtx.onDisplay && addBookmarkForm}</>;
 };
 
 export default React.memo(AddBookmark);

@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import globalContext from "./global-context";
+import setData from "./setdata-context";
 import axios from "axios";
 
-const API_URL = "https://crudcrud.com/api/21eb661583b14b80b85b2ff878a215ae/bookmarkList";
+const API_URL = "https://crudcrud.com/api/8f5b27c8e9124822a598ed08c8282e82/bookmarkList";
 
 const ContextProvidder = (props) => {
-	const [mytitle, setTitle] = useState("");
-	const [myBookmark, setBookmark] = useState("");
+	// const [mytitle, setTitle] = useState("");
+	// const [myBookmark, setBookmark] = useState("");
 
 	const [bookmarkList, setbookmarkList] = useState([]);
 
 	const addBookmarkHandler = async (bookmarkItem) => {
 		try {
 			const response = await axios.post(API_URL, bookmarkItem);
-			// console.log(response.data); //3
+
 			console.log(response.status, response.statusText, "List POST Success"); //4
 
 			setbookmarkList((prevList) => {
@@ -78,9 +79,13 @@ const ContextProvidder = (props) => {
 			console.log("error");
 		}
 	};
+
+	const { setTitle, setBookmark } = useContext(setData);
+
 	const editBookmarkHandler = async (edit) => {
 		try {
 			await axios.delete(API_URL + "/" + edit._id);
+
 			setbookmarkList((prevList) => {
 				for (let pdata of prevList) {
 					if (pdata._id === edit._id) {
@@ -96,30 +101,18 @@ const ContextProvidder = (props) => {
 		}
 	};
 
-	const [displayForm, setDisplayForm] = useState(false);
-	const handleFormDisplay = (show) => {
-		setDisplayForm(show);
-	};
-
-	// localStorage.setItem("bmlist", JSON.stringify(bookmarkList));
-	// let storedBookmarks = localStorage.getItem("bmlist");
-	// const pasrsedBookmarks = JSON.parse(storedBookmarks);
-
 	const globalCtx = {
 		bookmarkList: bookmarkList,
-
-		formDisplayHandler: handleFormDisplay,
-		onDisplay: displayForm,
 
 		addBookmark: addBookmarkHandler,
 		deleteBookmark: deleteBookmarkHandler,
 		editBookmark: editBookmarkHandler,
 
 		setData: {
-			mytitle,
-			setTitle,
-			myBookmark,
-			setBookmark,
+			// mytitle,
+			// setTitle,
+			// myBookmark,
+			// setBookmark,
 		},
 	};
 
