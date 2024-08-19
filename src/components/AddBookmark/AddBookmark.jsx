@@ -22,7 +22,6 @@ const AddBookmark = () => {
 		const bookmarkData = {
 			title: mytitle,
 			bookmark: myBookmark,
-			id: Math.random().toString(),
 		};
 
 		formCtx.addBookmark(bookmarkData);
@@ -71,4 +70,4 @@ const AddBookmark = () => {
 	return <>{formCtx.onDisplay && addBookmarkForm}</>;
 };
 
-export default AddBookmark;
+export default React.memo(AddBookmark);

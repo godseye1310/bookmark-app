@@ -2,22 +2,22 @@ import React from "react";
 import Button from "../../UI/Button";
 
 const BookmarkItem = (props) => {
-	const handleDelete = () => {
-		props.onDelete(props.id);
-	};
+	// const handleDelete = () => {
+	// 	props.onDelete(props.id);
+	// };
 	return (
 		<>
 			<li>
 				<div>
 					<h3>
 						{props.title} :
-						<a href="$" target="blank">
+						<a href={props.bookmark} target="blank" rel="noreferrer noopener">
 							{props.bookmark}
 						</a>
 					</h3>
 				</div>
 				<div>
-					<Button onClick={handleDelete}>Delete</Button>
+					<Button onClick={props.onDelete}>Delete</Button>
 					<Button onClick={props.onEdit}>Edit</Button>
 				</div>
 			</li>

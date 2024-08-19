@@ -8,25 +8,25 @@ const BookmarkList = () => {
 	const listCtx = useContext(globalContext);
 
 	const { bookmarkList } = listCtx;
-	// console.log(bookmarkList);
+	console.log("re-evaluated cause of context");
 
-	const deleteHandler = (id) => {
-		listCtx.deleteBookmark(id);
+	const deleteHandler = (delitem) => {
+		listCtx.deleteBookmark(delitem);
 	};
 
-	const editHandler = (markItemUpdate) => {
-		listCtx.editBookmark(markItemUpdate);
+	const editHandler = (editItem) => {
+		listCtx.editBookmark(editItem);
 		listCtx.formDisplayHandler(true);
 	};
 
 	let dataList = bookmarkList.map((markitem) => {
 		return (
 			<BookmarkItem
-				key={markitem.id}
-				id={markitem.id}
+				key={markitem._id}
+				id={markitem._id}
 				title={markitem.title}
 				bookmark={markitem.bookmark}
-				onDelete={deleteHandler}
+				onDelete={deleteHandler.bind(null, markitem)}
 				onEdit={editHandler.bind(null, markitem)}
 			/>
 		);
