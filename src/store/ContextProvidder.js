@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import globalContext from "./global-context";
 import axios from "axios";
 
-const API_URL = "https://crudcrud.com/api/21eb661583b14b80b85b2ff878a215ae/bookmarkList";
+const API_URL = "https://crudcrud.com/api/8f5b27c8e9124822a598ed08c8282e82/bookmarkList";
 
 const ContextProvidder = (props) => {
 	const [mytitle, setTitle] = useState("");
@@ -18,8 +18,8 @@ const ContextProvidder = (props) => {
 
 			setbookmarkList((prevList) => {
 				// console.log(prevList); //5
-				// console.log(response.data); //6
-				return [response.data, ...prevList];
+				console.log(response.data); //6
+				return [...prevList, response.data];
 			});
 		} catch (error) {
 			console.log(error);
@@ -65,11 +65,11 @@ const ContextProvidder = (props) => {
 		try {
 			const response = await axios.delete(API_URL + "/" + del._id);
 			setbookmarkList((prevList) => {
-				for (let pdata of prevList) {
-					if (pdata._id === del._id) {
-						return prevList.filter((pdata) => pdata._id !== del._id);
-					}
-				}
+				// for (let pdata of prevList) {
+				// 	if (pdata._id === del._id) {
+				return prevList.filter((pdata) => pdata._id !== del._id);
+				// 	}
+				// }
 			});
 			// console.log(bookmarkList);
 
@@ -82,14 +82,10 @@ const ContextProvidder = (props) => {
 		try {
 			await axios.delete(API_URL + "/" + edit._id);
 			setbookmarkList((prevList) => {
-				for (let pdata of prevList) {
-					if (pdata._id === edit._id) {
-						// console.log(edit);
-						setTitle(edit.title);
-						setBookmark(edit.bookmark);
-						return prevList.filter((pdata) => pdata._id !== edit._id);
-					}
-				}
+				// console.log(edit);
+				setTitle(edit.title);
+				setBookmark(edit.bookmark);
+				return prevList.filter((pdata) => pdata._id !== edit._id);
 			});
 		} catch (error) {
 			console.log("error");
@@ -101,9 +97,10 @@ const ContextProvidder = (props) => {
 		setDisplayForm(show);
 	};
 
-	// localStorage.setItem("bmlist", JSON.stringify(bookmarkList));
-	// let storedBookmarks = localStorage.getItem("bmlist");
-	// const pasrsedBookmarks = JSON.parse(storedBookmarks);
+	const [updateBtn, setUpDateBtn] = useState(true);
+	const handleBtn = (btn) => {
+		setUpDateBtn(btn);
+	};
 
 	const globalCtx = {
 		bookmarkList: bookmarkList,
@@ -114,6 +111,9 @@ const ContextProvidder = (props) => {
 		addBookmark: addBookmarkHandler,
 		deleteBookmark: deleteBookmarkHandler,
 		editBookmark: editBookmarkHandler,
+
+		handleBtn: handleBtn,
+		btnState: updateBtn,
 
 		setData: {
 			mytitle,

@@ -8,7 +8,7 @@ const BookmarkList = () => {
 	const listCtx = useContext(globalContext);
 
 	const { bookmarkList } = listCtx;
-	console.log("re-evaluated cause of context");
+	// console.log("re-evaluated cause of context");
 
 	const deleteHandler = (delitem) => {
 		listCtx.deleteBookmark(delitem);
@@ -17,6 +17,7 @@ const BookmarkList = () => {
 	const editHandler = (editItem) => {
 		listCtx.editBookmark(editItem);
 		listCtx.formDisplayHandler(true);
+		listCtx.handleBtn(false);
 	};
 
 	let dataList = bookmarkList.map((markitem) => {
