@@ -19,9 +19,16 @@ const BookmarkList = () => {
 		listCtx.formDisplayHandler(true);
 	};
 
+	const getFaviconUrl = (website, size = 128) => {
+		return `https://www.google.com/s2/favicons?domain=${
+			new URL(website).hostname
+		}&sz=${size}`;
+	};
+
 	let dataList = bookmarkList.map((markitem) => {
 		return (
 			<BookmarkItem
+				favicon={getFaviconUrl(markitem.bookmark)}
 				key={markitem._id}
 				id={markitem._id}
 				title={markitem.title}

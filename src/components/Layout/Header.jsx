@@ -12,9 +12,9 @@ const Header = () => {
 	return (
 		<div className={styles.header}>
 			<div>
-				<h1>Bookmark App</h1>
+				<h1>Save Bookmarks</h1>
 			</div>
-			<Button onClick={showForm}>Add New</Button>
+			<Button onClick={showForm}>Add New Bookmark</Button>
 		</div>
 	);
 };

@@ -1,7 +1,22 @@
 .card {
-	margin: 3rem 9rem;
+	margin: 3rem 6rem;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .card ul {
 	list-style: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	text-align: start;
+	overflow-y: auto;
+}
+
+@media (max-width: 750px) {
+	/* Style for screens 750px and narrower */
+	.card {
+		margin: 1rem 1rem;
+	}
 }

@@ -1,3 +1,33 @@
 .header {
 	text-align: center;
 }
+
+.header h1 {
+	font-size: 54px;
+	font-family: monospace;
+	font-weight: bolder;
+	color: transparent;
+	background: linear-gradient(45deg, darkslategray 51%, lightslategray 50%);
+	background-clip: text;
+}
+
+.header Button {
+	width: 300px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #e39c1e;
+	margin: 10px 0;
+	padding: 6px 12px;
+	height: 50px;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+
+	background: linear-gradient(to left, #6e6e6e 50%, rgba(0, 0, 0, 0.75) 50%);
+	background-size: 200%;
+	background-position: right;
+	transition: all 0.5s ease-out;
+}
+
+.header Button:hover {
+	background-position: left;
+}

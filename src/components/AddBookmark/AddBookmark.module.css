@@ -1,12 +1,35 @@
+.bg {
+	background-color: rgb(255 255 255 / 87%) !important;
+}
 .form {
 	text-align: center;
 	padding: 1rem;
 }
 
-.form label {
+.form div {
+	margin: 0.25rem;
+}
+
+.input {
+	text-align: start;
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
+}
+
+.input label {
+	font-weight: bold;
 	margin-right: 1rem;
 }
 
-.form input {
-	margin-left: 2rem;
+.input input {
+	padding: 5px;
+	width: 100%;
+}
+
+.btn {
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
 }

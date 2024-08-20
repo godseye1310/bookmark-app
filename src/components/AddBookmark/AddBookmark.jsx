@@ -3,6 +3,7 @@ import styles from "./AddBookmark.module.css";
 import ModalOverlay from "./../UI/ModalOverlay";
 import Button from "../UI/Button";
 import globalContext from "../../store/global-context";
+import Card from "../UI/Card";
 
 const AddBookmark = () => {
 	const formCtx = useContext(globalContext);
@@ -47,32 +48,35 @@ const AddBookmark = () => {
 
 	let addBookmarkForm = (
 		<ModalOverlay onClose={closeForm}>
-			<form onSubmit={addBoomarkHandler} className={styles.form}>
-				<div>
-					<label htmlFor="title">Bookmark title :</label>
-					<input
-						type="text"
-						id="title"
-						value={mytitle}
-						onChange={handleTitleInput}
-						required
-					/>
-				</div>
-				<div>
-					<label htmlFor="bookMark">Bookmark Page :</label>
-					<input
-						type="text"
-						id="bookMark"
-						value={myBookmark}
-						onChange={handleBookmarkInput}
-						required
-					/>
-				</div>
-				<div>
-					<Button onClick={closeForm}>X</Button>
-					<Button type="submit">{!formCtx.editingData ? "Add" : "Update"} </Button>
-				</div>
-			</form>
+			<Card className={styles.bg}>
+				<form onSubmit={addBoomarkHandler} className={styles.form}>
+					<div className={styles.input}>
+						<label htmlFor="title">Bookmark title :</label>
+						<input
+							type="text"
+							id="title"
+							value={mytitle}
+							onChange={handleTitleInput}
+							required
+							spellCheck="false"
+						/>
+					</div>
+					<div className={styles.input}>
+						<label htmlFor="bookMark">Bookmark Page :</label>
+						<input
+							type="text"
+							id="bookMark"
+							value={myBookmark}
+							onChange={handleBookmarkInput}
+							required
+						/>
+					</div>
+					<div className={styles.btn}>
+						<Button onClick={closeForm}>Cancel</Button>
+						<Button type="submit">{!formCtx.editingData ? "Add" : "Update"} </Button>
+					</div>
+				</form>
+			</Card>
 		</ModalOverlay>
 	);
 	return <>{formCtx.onDisplay && addBookmarkForm}</>;

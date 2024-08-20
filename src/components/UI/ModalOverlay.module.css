@@ -13,7 +13,8 @@
 	top: 20vh;
 	left: 25%;
 	width: 50%;
-	padding: 1rem 2rem;
+	/* padding: 1rem 2rem; */
 	z-index: 30;
+	border-radius: 12px;
 	/* animation: slide-down 300ms ease-out forwards; */
 }
