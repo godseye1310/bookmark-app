@@ -9,14 +9,14 @@ const AddBookmark = () => {
 
 	const { mytitle, setTitle, myBookmark, setBookmark } = formCtx.setData;
 
-	const titleHandler = (event) => {
+	const handleTitleInput = (event) => {
 		setTitle(event.target.value);
 	};
-	const passcodeHandler = (event) => {
+	const handleBookmarkInput = (event) => {
 		setBookmark(event.target.value);
 	};
 
-	const addPasswordHandler = (event) => {
+	const addBoomarkHandler = (event) => {
 		event.preventDefault();
 
 		const bookmarkData = {
@@ -41,14 +41,14 @@ const AddBookmark = () => {
 
 	let addBookmarkForm = (
 		<ModalOverlay onClose={closeForm}>
-			<form onSubmit={addPasswordHandler} className={styles.form}>
+			<form onSubmit={addBoomarkHandler} className={styles.form}>
 				<div>
 					<label htmlFor="title">Bookmark title :</label>
 					<input
 						type="text"
 						id="title"
 						value={mytitle}
-						onChange={titleHandler}
+						onChange={handleTitleInput}
 						required
 					/>
 				</div>
@@ -58,7 +58,7 @@ const AddBookmark = () => {
 						type="text"
 						id="bookMark"
 						value={myBookmark}
-						onChange={passcodeHandler}
+						onChange={handleBookmarkInput}
 						required
 					/>
 				</div>

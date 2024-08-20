@@ -18,7 +18,7 @@ const ContextProvidder = (props) => {
 
 			setbookmarkList((prevList) => {
 				// console.log(prevList); //5
-				console.log(response.data); //6
+				// console.log(response.data); //6
 				return [...prevList, response.data];
 			});
 		} catch (error) {
