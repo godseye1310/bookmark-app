@@ -6,12 +6,12 @@ const globalContext = React.createContext({
 	formDisplayHandler: (show) => {},
 	onDisplay: false,
 
-	handleBtn: (btn) => {},
-	btnState: true,
-
 	addBookmark: (ItemList) => {},
 	deleteBookmark: (id) => {},
-	editBookmark: (edit) => {},
+
+	editBookmark: (ID, editD) => {},
+	setEdit: (edit) => {},
+	editingData: null,
 
 	setData: {},
 });

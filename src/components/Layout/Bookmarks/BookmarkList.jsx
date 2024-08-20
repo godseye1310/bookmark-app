@@ -15,9 +15,8 @@ const BookmarkList = () => {
 	};
 
 	const editHandler = (editItem) => {
-		listCtx.editBookmark(editItem);
+		listCtx.setEdit(editItem);
 		listCtx.formDisplayHandler(true);
-		listCtx.handleBtn(false);
 	};
 
 	let dataList = bookmarkList.map((markitem) => {

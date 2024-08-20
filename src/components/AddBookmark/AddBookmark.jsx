@@ -24,17 +24,23 @@ const AddBookmark = () => {
 			bookmark: myBookmark,
 		};
 
-		formCtx.addBookmark(bookmarkData);
+		// console.log(formCtx.editingData);
+		if (formCtx.editingData) {
+			formCtx.editBookmark(formCtx.editingData._id, bookmarkData);
+		} else {
+			formCtx.addBookmark(bookmarkData);
+		}
+		formCtx.setEdit(null);
+
 		setTitle("");
 		setBookmark("");
 		formCtx.formDisplayHandler(false);
-		formCtx.handleBtn(true);
 		// console.log(bookmarkData);
 	};
 
 	const closeForm = () => {
+		formCtx.setEdit(null);
 		formCtx.formDisplayHandler(false);
-		formCtx.handleBtn(true);
 		setTitle("");
 		setBookmark("");
 	};
@@ -64,18 +70,8 @@ const AddBookmark = () => {
 				</div>
 				<div>
 					<Button onClick={closeForm}>X</Button>
-					<Button type="submit">{formCtx.btnState ? "Add" : "Update"} </Button>
+					<Button type="submit">{!formCtx.editingData ? "Add" : "Update"} </Button>
 				</div>
-				{!formCtx.btnState && (
-					<p>
-						Note : Closing without Updating will lead to{" "}
-						<strong>
-							<em>loss</em>
-						</strong>{" "}
-						of saved bookmark.{" "}
-						<em>Strongly Directed to click Update even if you make no changes</em>
-					</p>
-				)}
 			</form>
 		</ModalOverlay>
 	);

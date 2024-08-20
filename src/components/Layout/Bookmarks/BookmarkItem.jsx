@@ -2,9 +2,6 @@ import React from "react";
 import Button from "../../UI/Button";
 
 const BookmarkItem = (props) => {
-	// const handleDelete = () => {
-	// 	props.onDelete(props.id);
-	// };
 	return (
 		<>
 			<li>
