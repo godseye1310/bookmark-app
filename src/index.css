@@ -12,6 +12,18 @@ code {
     monospace;
 } */
 
+:root {
+	--bg-color: #f3f3f3;
+	/* --text-color: #000000; */
+}
+
+/* Step 4.1.2: Define variables for the dark theme */
+/* These variables will override the light theme variables */
+[data-theme="dark"] {
+	--bg-color: #142c2f;
+	/* --text-color: #ffffff; */
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
 
 * {
@@ -25,5 +37,9 @@ html {
 
 body {
 	margin: 0;
-	background-color: #f3f3f3;
+	background-color: var(--bg-color);
+	transition: background-color 1s, color 0.3s; /* Smooth transition between themes */
 }
+/* #0a1a29 */
+/* #142c2f */
+/* #004e76de */

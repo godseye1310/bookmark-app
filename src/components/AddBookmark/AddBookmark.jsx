@@ -4,8 +4,10 @@ import ModalOverlay from "./../UI/ModalOverlay";
 import Button from "../UI/Button";
 import globalContext from "../../store/global-context";
 import Card from "../UI/Card";
+import { useTheme } from "../../store/theme-context";
 
 const AddBookmark = () => {
+	const { theme } = useTheme();
 	const formCtx = useContext(globalContext);
 
 	const { mytitle, setTitle, myBookmark, setBookmark } = formCtx.setData;
@@ -48,7 +50,7 @@ const AddBookmark = () => {
 
 	let addBookmarkForm = (
 		<ModalOverlay onClose={closeForm}>
-			<Card className={styles.bg}>
+			<Card className={` ${theme === "light" ? styles.lightbg : styles.darkbg}`}>
 				<form onSubmit={addBoomarkHandler} className={styles.form}>
 					<div className={styles.input}>
 						<label htmlFor="title">Bookmark title :</label>
