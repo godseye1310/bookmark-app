@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bookmark-app/static/css/main.654cd41a.css",
+    "main.js": "/bookmark-app/static/js/main.b526adc0.js",
+    "index.html": "/bookmark-app/index.html",
+    "main.654cd41a.css.map": "/bookmark-app/static/css/main.654cd41a.css.map",
+    "main.b526adc0.js.map": "/bookmark-app/static/js/main.b526adc0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.654cd41a.css",
+    "static/js/main.b526adc0.js"
+  ]
+}
