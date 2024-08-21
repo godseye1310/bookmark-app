@@ -1,6 +1,6 @@
 {
 	"name": "bookmark-app",
-	"homepage": "https://godseye1310.github.io/userdata-form-react-app/bookmark-app",
+	"homepage": "https://godseye1310.github.io/bookmark-app",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
