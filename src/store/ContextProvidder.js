@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import globalContext from "./global-context";
 import axios from "axios";
 
-const API_URL = "https://crudcrud.com/api/7f806feb2cc046cab2333dad7b16da3a/bookmarkList";
+const API_URL = "https://crudcrud.com/api/18af2aa6c6964bddbe79fa42fec5ad8e/bookmarkList";
 
 const ContextProvidder = (props) => {
-	const [mytitle, setTitle] = useState("");
-	const [myBookmark, setBookmark] = useState("");
+	// const [mytitle, setTitle] = useState("");
+	// const [myBookmark, setBookmark] = useState("");
 
 	const [bookmarkList, setbookmarkList] = useState([]);
 
@@ -65,7 +65,7 @@ const ContextProvidder = (props) => {
 					editItem._id === id ? { ...edit, _id: id } : editItem
 				);
 			});
-			setEditingData(null);
+			// setEditingData(null);
 			console.log(response.status, response.statusText, "List Updated PUT SUccess");
 		} catch (error) {
 			console.log("error");
@@ -77,15 +77,15 @@ const ContextProvidder = (props) => {
 		setDisplayForm(show);
 	};
 
-	const [editingData, setEditingData] = useState(null);
-	const setBookmarktoEdit = (edit) => {
-		setEditingData(edit);
+	// const [editingData, setEditingData] = useState(null);
+	// const setBookmarktoEdit = (edit) => {
+	// 	setEditingData(edit);
 
-		if (edit) {
-			setTitle(edit.title);
-			setBookmark(edit.bookmark);
-		}
-	};
+	// 	if (edit) {
+	// 		setTitle(edit.title);
+	// 		setBookmark(edit.bookmark);
+	// 	}
+	// };
 
 	const globalCtx = {
 		bookmarkList: bookmarkList,
@@ -97,14 +97,14 @@ const ContextProvidder = (props) => {
 		deleteBookmark: deleteBookmarkHandler,
 		editBookmark: editBookmarkHandler,
 
-		setEdit: setBookmarktoEdit,
-		editingData: editingData,
+		// setEdit: setBookmarktoEdit,
+		// editingData: editingData,
 
 		setData: {
-			mytitle,
-			setTitle,
-			myBookmark,
-			setBookmark,
+			// mytitle,
+			// setTitle,
+			// myBookmark,
+			// setBookmark,
 		},
 	};
 

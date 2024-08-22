@@ -3,20 +3,27 @@ import styles from "./BookmarkList.module.css";
 import Card from "../../UI/Card";
 import BookmarkItem from "./BookmarkItem";
 import globalContext from "../../../store/global-context";
+import useData from "../../../store/data-and-edit-context";
 
 const BookmarkList = () => {
-	const listCtx = useContext(globalContext);
+	const { bookmarkList, deleteBookmark, formDisplayHandler } = useContext(globalContext);
 
-	const { bookmarkList } = listCtx;
-	// console.log("re-evaluated cause of context");
+	const { setEdit, titleref, bookmarkref } = useData();
+
+	console.log("re-evaluated cause of context");
 
 	const deleteHandler = (delitem) => {
-		listCtx.deleteBookmark(delitem);
+		deleteBookmark(delitem);
 	};
 
 	const editHandler = (editItem) => {
-		listCtx.setEdit(editItem);
-		listCtx.formDisplayHandler(true);
+		if (titleref.current && bookmarkref.current && editItem.title && editItem.bookmark) {
+			titleref.current.value = editItem.title;
+			bookmarkref.current.value = editItem.bookmark;
+		}
+
+		setEdit(editItem);
+		formDisplayHandler(true);
 	};
 
 	const getFaviconUrl = (website, size = 128) => {

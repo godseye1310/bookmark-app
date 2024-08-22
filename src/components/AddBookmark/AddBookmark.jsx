@@ -6,11 +6,22 @@ import globalContext from "../../store/global-context";
 import Card from "../UI/Card";
 import { useTheme } from "../../store/theme-context";
 
+import useData from "../../store/data-and-edit-context";
+
 const AddBookmark = () => {
 	const { theme } = useTheme();
 	const formCtx = useContext(globalContext);
 
-	const { mytitle, setTitle, myBookmark, setBookmark } = formCtx.setData;
+	const {
+		mytitle,
+		setTitle,
+		myBookmark,
+		setBookmark,
+		editingData,
+		setEdit,
+		titleref,
+		bookmarkref,
+	} = useData();
 
 	const handleTitleInput = (event) => {
 		setTitle(event.target.value);
@@ -28,12 +39,12 @@ const AddBookmark = () => {
 		};
 
 		// console.log(formCtx.editingData);
-		if (formCtx.editingData) {
-			formCtx.editBookmark(formCtx.editingData._id, bookmarkData);
+		if (editingData) {
+			formCtx.editBookmark(editingData._id, bookmarkData);
 		} else {
 			formCtx.addBookmark(bookmarkData);
 		}
-		formCtx.setEdit(null);
+		setEdit(null);
 
 		setTitle("");
 		setBookmark("");
@@ -42,11 +53,14 @@ const AddBookmark = () => {
 	};
 
 	const closeForm = () => {
-		formCtx.setEdit(null);
+		setEdit(null);
 		formCtx.formDisplayHandler(false);
 		setTitle("");
 		setBookmark("");
 	};
+
+	// const titleref = useRef(null)
+	// const bookmarkref = useRef(null)
 
 	let addBookmarkForm = (
 		<ModalOverlay onClose={closeForm}>
@@ -61,6 +75,8 @@ const AddBookmark = () => {
 							onChange={handleTitleInput}
 							required
 							spellCheck="false"
+							autoFocus
+							ref={titleref}
 						/>
 					</div>
 					<div className={styles.input}>
@@ -71,11 +87,13 @@ const AddBookmark = () => {
 							value={myBookmark}
 							onChange={handleBookmarkInput}
 							required
+							spellCheck="false"
+							ref={bookmarkref}
 						/>
 					</div>
 					<div className={styles.btn}>
 						<Button onClick={closeForm}>Cancel</Button>
-						<Button type="submit">{!formCtx.editingData ? "Add" : "Update"} </Button>
+						<Button type="submit">{!editingData ? "Add" : "Update"} </Button>
 					</div>
 				</form>
 			</Card>
