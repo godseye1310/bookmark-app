@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Backend
+
+This app uses crud-crud to handle data at back-end. I'm using a a temporary [CrudCrud](https://crudcrud.com/) Rest API which expires in 24-hrs.
+
+**Important: Make sure to `change` to a new end-point [CrudCrud](https://crudcrud.com/)**, When Downloading to use it locally.
+
+## Deployed using 'gh-pages'
+
+This Project is hosted on github deployed using 'gh-pages'.
+Click here to view [Save Bookmark App](https://godseye1310.github.io/bookmark-app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
