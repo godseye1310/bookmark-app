@@ -8,7 +8,10 @@ import useData from "../../../store/data-and-edit-context";
 const BookmarkList = () => {
 	const { bookmarkList, deleteBookmark, formDisplayHandler } = useContext(globalContext);
 
-	const { setEdit, titleref, bookmarkref } = useData();
+	const {
+		setEdit,
+		// titleref, bookmarkref
+	} = useData();
 
 	console.log("re-evaluated cause of context");
 
@@ -17,10 +20,10 @@ const BookmarkList = () => {
 	};
 
 	const editHandler = (editItem) => {
-		if (titleref.current && bookmarkref.current && editItem.title && editItem.bookmark) {
-			titleref.current.value = editItem.title;
-			bookmarkref.current.value = editItem.bookmark;
-		}
+		// if (titleref.current && bookmarkref.current && editItem.title && editItem.bookmark) {
+		// 	titleref.current.value = editItem.title;
+		// 	bookmarkref.current.value = editItem.bookmark;
+		// }
 
 		setEdit(editItem);
 		formDisplayHandler(true);
