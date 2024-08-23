@@ -61,6 +61,7 @@ const AddBookmark = () => {
 							onChange={handleTitleInput}
 							required
 							spellCheck="false"
+							autoFocus
 						/>
 					</div>
 					<div className={styles.input}>
@@ -71,6 +72,7 @@ const AddBookmark = () => {
 							value={myBookmark}
 							onChange={handleBookmarkInput}
 							required
+							spellCheck="false"
 						/>
 					</div>
 					<div className={styles.btn}>
