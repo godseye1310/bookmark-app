@@ -55,6 +55,7 @@ const AddBookmark = () => {
 					<div className={styles.input}>
 						<label htmlFor="title">Bookmark title :</label>
 						<input
+							placeholder="Bookmark Title"
 							type="text"
 							id="title"
 							value={mytitle}
@@ -67,7 +68,8 @@ const AddBookmark = () => {
 					<div className={styles.input}>
 						<label htmlFor="bookMark">Bookmark Page :</label>
 						<input
-							type="text"
+							placeholder="https://www.exampleBookmark.com"
+							type="url"
 							id="bookMark"
 							value={myBookmark}
 							onChange={handleBookmarkInput}
@@ -86,4 +88,4 @@ const AddBookmark = () => {
 	return <>{formCtx.onDisplay && addBookmarkForm}</>;
 };
 
-export default React.memo(AddBookmark);
+export default AddBookmark;
